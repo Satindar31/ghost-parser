@@ -40,6 +40,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { WebhookType } from "@/generated/prisma/enums";
+import { toast } from "sonner";
 
 export function SaveWebhookButton() {
 	const [open, setOpen] = React.useState(false);
@@ -49,7 +50,12 @@ export function SaveWebhookButton() {
 		return (
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogTrigger asChild>
-					<Button className="ml-2 h-10 rounded-r-md rounded-l-none" variant="outline">Save Webhook</Button>
+					<Button
+						className="ml-2 h-10 rounded-r-md rounded-l-none"
+						variant="outline"
+					>
+						Save Webhook
+					</Button>
 				</DialogTrigger>
 				<DialogContent className="sm:max-w-[425px]">
 					<DialogHeader>
@@ -67,7 +73,12 @@ export function SaveWebhookButton() {
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
 			<DrawerTrigger asChild>
-				<Button className="ml-2 h-10 rounded-r-md rounded-l-none" variant="outline">Save webhook</Button>
+				<Button
+					className="ml-2 h-10 rounded-r-md rounded-l-none"
+					variant="outline"
+				>
+					Save webhook
+				</Button>
 			</DrawerTrigger>
 			<DrawerContent>
 				<DrawerHeader className="text-left">
@@ -102,7 +113,7 @@ function WebhookForm({ className }: React.ComponentProps<"form">) {
 		const formData = new FormData(e.target as HTMLFormElement);
 		const webhookUrl = formData.get("URL") as string;
 
-		fetch("/api/saveWebhook", {
+		const res = fetch("/api/saveWebhook", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -111,18 +122,19 @@ function WebhookForm({ className }: React.ComponentProps<"form">) {
 				webhookUrl,
 				type: value,
 			}),
-		}).then(async (res) => {
-			if (res.ok) {
-				alert("Webhook saved successfully!");
-			} else {
-				const error = await res.text();
-				alert("Error saving webhook: " + error);
-			}
+		});
+		toast.promise(res, {
+			loading: "Saving webhook...",
+			success: "Webhook saved!",
+			error: "Error saving webhook.",
 		});
 	}
 
 	return (
-		<form onSubmit={e => onSubmit(e)} className={cn("grid items-start gap-6", className)}>
+		<form
+			onSubmit={(e) => onSubmit(e)}
+			className={cn("grid items-start gap-6", className)}
+		>
 			<div className="grid gap-3">
 				<Label htmlFor="type">Type</Label>
 				<Popover open={open} onOpenChange={setOpen}>
