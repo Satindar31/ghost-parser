@@ -1,5 +1,6 @@
 "use client";
 
+import { SaveWebhookButton } from "@/components/home/saveWebhookBtn";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -60,11 +61,12 @@ export default function Home() {
 					/>
 					<Button
 						type="submit"
-						className="ml-2 h-10 rounded-r-md rounded-l-none"
+						className="ml-2 h-10 rounded-none"
 						variant={"outline"}
 					>
 						Fetch RSS
 					</Button>
+					<SaveWebhookButton />
 				</form>
 				<>
 					{loading ? (

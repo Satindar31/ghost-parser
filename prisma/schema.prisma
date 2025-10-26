@@ -29,5 +29,6 @@ model Webhook {
 
 enum WebhookType {
   DISCORD
+  SLACK
   CUSTOM
 }
