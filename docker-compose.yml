@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rss_app
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://postgres:postgres@db:5432/rssapp
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: rss_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rssapp
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  cron:
+    image: curlimages/curl:8.6.0
+    container_name: rss_cron
+    depends_on:
+      - app
+    restart: always
+    entrypoint: >
+      sh -c "
+        echo '*/5 * * * * curl -fsS http://app:3000/api/fetch-feeds > /proc/1/fd/1 2>&1' > /etc/crontabs/root &&
+        crond -f
+      "
+
+volumes:
+  pgdata:
