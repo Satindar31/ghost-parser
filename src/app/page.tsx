@@ -66,7 +66,7 @@ export default function Home() {
 					>
 						Fetch RSS
 					</Button>
-					<SaveWebhookButton />
+					<SaveWebhookButton url={rssUrl}/>
 				</form>
 				<>
 					{loading ? (

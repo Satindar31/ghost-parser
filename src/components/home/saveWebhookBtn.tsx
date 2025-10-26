@@ -42,7 +42,7 @@ import {
 import { WebhookType } from "@/generated/prisma/enums";
 import { toast } from "sonner";
 
-export function SaveWebhookButton() {
+export function SaveWebhookButton({url}: {url?: string}) {
 	const [open, setOpen] = React.useState(false);
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -64,7 +64,7 @@ export function SaveWebhookButton() {
 							Enter details for webhook here. Click save when you&apos;re done.
 						</DialogDescription>
 					</DialogHeader>
-					<WebhookForm />
+					<WebhookForm url={url} />
 				</DialogContent>
 			</Dialog>
 		);
@@ -87,7 +87,7 @@ export function SaveWebhookButton() {
 						Enter details for webhook here. Click save when you&apos;re done.
 					</DrawerDescription>
 				</DrawerHeader>
-				<WebhookForm className="px-4" />
+				<WebhookForm url={url} className="px-4" />
 				<DrawerFooter className="pt-2">
 					<DrawerClose asChild>
 						<Button variant="outline">Cancel</Button>
@@ -98,12 +98,12 @@ export function SaveWebhookButton() {
 	);
 }
 const webtype = [
-	{ label: "Discord", value: WebhookType.DISCORD },
+	// { label: "Discord", value: WebhookType.DISCORD },
 	// { label: "Slack", value: WebhookType.SLACK },
-	// { label: "Custom", value: WebhookType.CUSTOM },
+	{ label: "Custom", value: WebhookType.CUSTOM },
 ];
 
-function WebhookForm({ className }: React.ComponentProps<"form">) {
+function WebhookForm({ className, url }: React.ComponentProps<"form"> & { url?: string }) {
 	const [open, setOpen] = React.useState(false);
 	const [value, setValue] = React.useState("");
 
@@ -119,7 +119,8 @@ function WebhookForm({ className }: React.ComponentProps<"form">) {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				webhookUrl,
+				url,
+				sendToURL: webhookUrl,
 				type: value,
 			}),
 		});

@@ -3,11 +3,12 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
 export async function POST(req:NextRequest) {
-    const { webhookUrl, type } = await req.json();
+    const { url, sendToURL, type } = await req.json();
 
     const save = await prisma.webhook.create({
         data: {
-            url: webhookUrl,
+            url: url,
+            sendToURL: sendToURL,
             type: type.toUpperCase() as WebhookType,
         }
     })
