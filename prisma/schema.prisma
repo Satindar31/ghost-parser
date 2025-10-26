@@ -19,6 +19,16 @@ datasource db {
   url               = env("DATABASE_URL")
 }
 
+model Feed {
+  id           String   @id @default(cuid())
+  rssUrl       String   @unique
+  lastPostGuid String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  webhooks Webhook[]
+}
+
 model Webhook {
   id        String      @id @default(cuid())
   url       String
@@ -26,6 +36,9 @@ model Webhook {
   type      WebhookType
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
+
+  feedId String?
+  feed   Feed?   @relation(fields: [feedId], references: [id])
 }
 
 enum WebhookType {

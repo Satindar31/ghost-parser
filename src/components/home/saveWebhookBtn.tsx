@@ -189,6 +189,17 @@ function WebhookForm({ className, url }: React.ComponentProps<"form"> & { url?: 
 				<Label htmlFor="URL">Webhook URL</Label>
 				<Input id="URL" name="URL" placeholder="https://discord.com/" />
 			</div>
+			<Button onClick={() => {
+				const res = fetch("/api/checkRSS")
+				toast.promise(res, {
+					loading: "Testing webhooks...",
+					success: async (res) => {
+						const message = await res.json()
+						return message.message
+					},
+					error: "Error testing webhooks.",
+				});
+			}} type="button" variant={"outline"}>Test</Button>
 			<Button type="submit">Save</Button>
 		</form>
 	);
