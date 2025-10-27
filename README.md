@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center" id="title">Ghost Parser</h1>
 
-## Getting Started
+<p align="center"><img src="https://socialify.git.ci/satindar31/ghost-parser/image?custom_description=Parse+and+setup+webhooks+your+ghost+blogs%21&amp;description=1&amp;font=Inter&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Circuit+Board&amp;theme=Dark" alt="project-image"></p>
 
-First, run the development server:
+<p align="center"><img src="https://img.shields.io/github/actions/workflow/status/satindar31/ghost-parser/docker-image.yml" alt="shields"><img src="https://img.shields.io/docker/pulls/satindar31/ghost-parser" alt="shields"><img src="https://img.shields.io/github/license/satindar31/ghost-parser" alt="shields"></p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<h2>🚀 Demo</h2>
+
+[https://ghost-parser.hiibi.xyz](https://ghost-parser.hiibi.xyz)
+
+<h2>Project Screenshots:</h2>
+
+<img src="https://private-user-images.githubusercontent.com/73517520/506106471-06c18090-01b7-4fc2-9a27-8adc2d5072bd.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE1ODE2NjIsIm5iZiI6MTc2MTU4MTM2MiwicGF0aCI6Ii83MzUxNzUyMC81MDYxMDY0NzEtMDZjMTgwOTAtMDFiNy00ZmMyLTlhMjctOGFkYzJkNTA3MmJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDI3VDE2MDkyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTE4NjIwM2FlODllZmQ4ZmVkZmNhMTgwNTQ1YWQ5ZWQyZTQ2NmM3MzcxYjIwMDBiYTQ0Y2E5NjY3ZmZlYmY0NGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.H8vlRf4unPcJiHB5z4v5qzZvKsB7eu_mnexSmc3ucVM" alt="project-screenshot">
+
+  
+  
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+*   View article details from the blog RSS
+*   Setup webhooks to get notified when new articles are published
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Clone the repo</p>
+
+```
+git clone https://github.com/satindar31/ghost-parser
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>2. Run the app using docker</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+docker compose up -d
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  
+  
+<h2>💻 Built with</h2>
 
-## Learn More
+Technologies used in the project:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   NextJS
+*   Prisma
+*   Postgres
+*   ShadcnUI
