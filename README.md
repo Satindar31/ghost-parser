@@ -25,16 +25,21 @@ Here're some of the project's best features:
 
 <p>1. Clone the repo</p>
 
-```
+```bash
 git clone https://github.com/satindar31/ghost-parser
 ```
 
-<p>2. Run the app using docker</p>
+<p>2. Move the repo directory</p>
 
+```bash
+cd ghost-parser
 ```
+
+<p>3. Run the app using docker</p>
+
+```bash
 docker compose up -d
 ```
-
   
   
 <h2>💻 Built with</h2>
