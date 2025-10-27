@@ -30,6 +30,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/next.config.ts ./next.config.ts
 COPY --from=builder /app/src ./src
+COPY start.sh ./start.sh
+
+RUN chmod +x ./start.sh
 
 # Set environment
 ENV NODE_ENV=production
@@ -37,4 +40,4 @@ ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["./start.sh"]
