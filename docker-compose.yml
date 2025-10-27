@@ -29,7 +29,7 @@ services:
     restart: always
     entrypoint: >
       sh -c "
-        echo '*/5 * * * * curl -fsS http://app:3000/api/fetch-feeds > /proc/1/fd/1 2>&1' > /etc/crontabs/root &&
+        echo '*/5 * * * * curl -fsS http://app:3000/api/checkRSS > /proc/1/fd/1 2>&1' > /etc/crontabs/root &&
         crond -f
       "
 
