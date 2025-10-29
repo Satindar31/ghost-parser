@@ -98,8 +98,8 @@ export function SaveWebhookButton({url}: {url?: string}) {
 	);
 }
 const webtype = [
-	// { label: "Discord", value: WebhookType.DISCORD },
-	// { label: "Slack", value: WebhookType.SLACK },
+	{ label: "Discord", value: WebhookType.DISCORD },
+	{ label: "Slack", value: WebhookType.SLACK },
 	{ label: "Custom", value: WebhookType.CUSTOM },
 ];
 
